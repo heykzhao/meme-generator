@@ -1,9 +1,12 @@
-
+import "./style/Reset.css";
+import Header from "./components/Header";
+import Meme from "./components/Meme";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div>
+      <Header />
+      <Meme />
     </div>
   );
 }
