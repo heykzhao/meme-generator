@@ -30,3 +30,25 @@ main {
 .form-button:hover{
   background: linear-gradient(-90deg, #2b026b 1.18%, #7128e7 100%);
 }
+
+
+@media only screen and (max-width: 600px) {
+  main {
+    padding: 20px;
+  }
+
+  .form {
+    grid-template: 45px 30px / 1fr 1fr;
+    gap: 10px;
+  }
+
+  .form-input {
+    font-size: 0.7rem;
+    border-radius: 5px;
+    text-indent: 5px;
+  }
+  
+  .form-button {
+    font-size: 0.7rem;
+  }
+}
