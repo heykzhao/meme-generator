@@ -1,9 +1,14 @@
 import "../style/Meme.css";
 
 function Meme() {
+
+  function getMemeImage() {
+    console.log("Test");
+  }
+
   return (
     <main>
-      <form className="form">
+      <div className="form">
         <input 
           type="text"
           placeholder="Top text"
@@ -16,10 +21,11 @@ function Meme() {
         />
         <button
           className="form-button"
+          onClick={getMemeImage}
         >
           Get a new meme image 👹
         </button>
-      </form>
+      </div>
     </main>
   )
 }
