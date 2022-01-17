@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   
@@ -12,18 +13,30 @@
   user-select: none;
 }
 
-.header > img {
+.header-logo {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.header-logo > img {
   height: 26px;
 }
 
-.header > h2 {
+.header-logo > h2 {
   color: white;
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 110%;
   margin-left: 7px;
+}
+
+.header >h4 {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 @media only screen and (max-width: 600px) {
