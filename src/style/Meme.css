@@ -1,19 +1,31 @@
 main {
   padding: 36px;
 }
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
 .form {
   display: grid;
   grid-template: 60px 40px / 1fr 1fr;
   gap: 16px;
+  padding-bottom: 16px;
 }
 
 .form-input {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   border: 1px solid #D5D4D8;
-  text-indent: 10px;
+  padding: 10px;
 }
 
 .form-button {
@@ -31,10 +43,49 @@ main {
   background: linear-gradient(-90deg, #2b026b 1.18%, #7128e7 100%);
 }
 
-.meme-image-section > img {
-  width: 100%;
+.meme-image-section {
+  position: relative;
 }
 
+.meme-image-section > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+.meme-image-text {
+  display: block;
+  cursor: grab;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  margin: 20px 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 2em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+.top-text {
+  top: 0;
+}
+
+.bottom-text {
+  bottom: 0;
+}
 
 @media only screen and (max-width: 600px) {
   main {
@@ -49,7 +100,7 @@ main {
   .form-input {
     font-size: 0.7rem;
     border-radius: 5px;
-    text-indent: 5px;
+    padding: 5px;
   }
   
   .form-button {

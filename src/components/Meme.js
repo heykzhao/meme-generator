@@ -1,6 +1,6 @@
-import { useState } from "react";
-import memesData from "../memesData";
-import memeData from "../memesData";
+import { useEffect, useState } from "react";
+import Draggable from 'react-draggable';
+
 import "../style/Meme.css";
 
 function Meme() {
@@ -11,30 +11,50 @@ function Meme() {
     randomImage: "http://i.imgflip.com/1bij.jpg"
   })
 
-  const [allMemeImages, setAllMemeImages] = useState(memesData)
+  const [allMemes, setAllMemes] = useState([])
+
+  useEffect(() => {
+    async function getMeme() {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const array = await res.json();
+      setAllMemes(array.data.memes);
+    }
+    getMeme();
+  }, [])
 
   function getMemeImage() {
-    const memesArray = memeData.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url;
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNumber].url;
     setMeme(prevMeme => ({
       ...prevMeme,
       randomImage: url
     }));
   }
 
+  function handleTextChange(event) {
+    const {name, value} = event.target
+    setMeme(prevMeme => ({
+      ...prevMeme,
+      [name]: value,
+    }))
+  }
+
   return (
     <main>
       <div className="form">
-        <input 
-          type="text"
+        <textarea
           placeholder="Top text"
           className="form-input form-input-top"
+          name="topText"
+          value={meme.topText}
+          onChange={handleTextChange}
         />
-        <input 
-          type="text"
+        <textarea 
           placeholder="Bottom text"
           className="form-input form-input-bottom"
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleTextChange}
         />
         <button
           className="form-button"
@@ -44,10 +64,21 @@ function Meme() {
         </button>
       </div>
       <div className="meme-image-section">
-        <img 
+        <img
           alt='Meme from Imgflip API'
           src={meme.randomImage}
+          className="noselect"
         />
+        <Draggable
+          defaultPosition={{x: 0, y: 0}}
+        >
+          <h2 className="meme-image-text top-text noselect">{meme.topText}</h2>
+        </Draggable>
+        <Draggable
+          defaultPosition={{x: 0, y: 0}}
+        >
+          <h2 className="meme-image-text bottom-text noselect">{meme.bottomText}</h2>
+        </Draggable> 
       </div>
     </main>
   )
