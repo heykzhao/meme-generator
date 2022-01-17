@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Draggable from 'react-draggable';
-
 import "../style/Meme.css";
 
 function Meme() {
